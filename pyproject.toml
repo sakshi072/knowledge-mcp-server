@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "knowledge-mcp-server"
+version = "0.1.0"
+description = "MCP server exposing rag-mcp-service's knowledge-base search as a tool"
+authors = ["Sakshi Tayal"]
+packages = [{ include = "mcp_server", from = "src" }]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastmcp = "*"
+httpx = "*"
+pydantic = "^2.7.0"
+pydantic-settings = "^2.3.0"
+uvicorn = "*"
+starlette = "*"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.2.0"
+pytest-asyncio = "^0.23.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
