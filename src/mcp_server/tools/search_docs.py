@@ -7,11 +7,18 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+# NOTE: domain names/descriptions are hardcoded to THIS deployment's
+# actual domains - if this MCP server is ever reused for a different
+# knowledge base, this needs updating manually. The robust fix is
+# dynamic domain discovery from rag-mcp-service at startup - not built yet.
 async def search_knowledge_base(
     query: Annotated[str, Field(description="The search query string", min_length=1)],
     domain_name: Annotated[
         str,
-        Field(description="Domain to search within, e.g. 'langchain-docs' or 'mcp-docs'"),
+        Field(description="Domain to search within. Available domains: "
+                        "'langchain-docs' (LangChain, LangGraph, frontend integrations "
+                        "like generative UI/CopilotKit, middleware, agent tooling), "
+                        "'mcp-docs' (Model Context Protocol specification)."),
     ],
     top_k: Annotated[int, Field(gt=0, le=10, description="Number of results to return")] = 3,
 ) -> str:
