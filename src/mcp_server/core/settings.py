@@ -29,7 +29,7 @@ class Settings(BaseSettings):
 
     # RAG Microservice (rag-mcp-service) settings
     RETRIEVAL_BASE_URL: HttpUrl
-    RETRIEVAL_TIMEOUT: float = 30.0
+    RETRIEVAL_TIMEOUT: float = 60.0
     RETRIEVAL_RETRIES: int = 3
 
     # Auth0 M2M settings - used to fetch OUR OWN token to call
